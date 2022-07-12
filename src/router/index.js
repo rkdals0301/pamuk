@@ -10,7 +10,7 @@ const routes = [
   {
     path: RoutePath.Recipe,
     name: PageName.Recipe,
-    component: () => import('@/views/recipe/RecipePage')
+    component: () => import('@/views/recipe/Recipe')
   }
 ]
 

@@ -1,22 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuex from 'vuex'
 import vuetify from './plugins/vuetify'
 import VueRouter from 'vue-router'
 import router from '@/router'
-import VueCompositionAPI from '@vue/composition-api'
-import { createPinia, PiniaVuePlugin } from 'pinia'
+import store from '@/store'
+import '@/utils/error'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-Vue.use(VueCompositionAPI)
-Vue.use(PiniaVuePlugin)
-
-
-const pinia = createPinia()
+Vue.use(Vuex)
 
 new Vue({
   vuetify,
   router,
-  pinia,
+  store,
   render: h => h(App)
 }).$mount('#app')

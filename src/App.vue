@@ -10,14 +10,20 @@
         <span>Recipe</span>
         <v-icon>mdi-receipt</v-icon>
       </v-btn>
-  </v-bottom-navigation>
+    </v-bottom-navigation>
+    <snackbar></snackbar>
   </v-app>
 </template>
 
 <script>
+import Snackbar from '@/components/common/Snackbar.vue'
+
 export default {
   name: 'App',
-};
+  components: {
+    Snackbar
+  }
+}
 </script>
 <style scoped>
   /* Vuetify Bug */

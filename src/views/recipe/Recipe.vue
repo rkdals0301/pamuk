@@ -26,21 +26,16 @@
         </v-list-item>
       </template>
     </v-list>
-    <recipe-list-item></recipe-list-item>
   </v-card>
 </template>
 
 <script>
-import RecipeListItem from '@/components/recipe/RecipeListItem'
 
-// import recipeAPI from '@/services/api/recipe'
+import recipeAPI from '@/services/api/recipe'
 
 export default {
-  name: 'RecipePage',
-  components: {
-    RecipeListItem
-  },
-  data () {
+  name: 'Recipe',
+  data() {
     return {
       items: [
         {
@@ -123,13 +118,9 @@ export default {
       ]
     }
   },
-  async created () {
-    // try {
-    //   const response = await recipeAPI.lookupRecipeList()
-    //   console.warn(response)
-    // } catch(error) {
-    //   console.error(error)
-    // }
+  async created() {
+      const response = await recipeAPI.lookupRecipeList()
+      console.warn(response)
   }
 }
 </script>
