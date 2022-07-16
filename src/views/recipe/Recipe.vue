@@ -1,24 +1,19 @@
 <template>
     <v-card
     max-width="450"
-    class="mx-auto"
-  >
+    class="mx-auto">
     <v-list three-line>
       <template v-for="(item, index) in items">
         <v-divider
           v-if="item.divider"
           :key="index"
-          :inset="item.inset"
-        ></v-divider>
-
+          :inset="item.inset"></v-divider>
         <v-list-item
           v-else
-          :key="item.title"
-        >
+          :key="item.title">
           <v-list-item-avatar>
             <v-img :src="item.avatar"></v-img>
           </v-list-item-avatar>
-
           <v-list-item-content>
             <v-list-item-title v-html="item.title"></v-list-item-title>
             <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
@@ -30,8 +25,8 @@
 </template>
 
 <script>
-
 import recipeAPI from '@/services/api/recipe'
+import SnackbarType from '@/utils/define/SnackbarType'
 
 export default {
   name: 'Recipe',
@@ -118,9 +113,19 @@ export default {
       ]
     }
   },
-  async created() {
-      const response = await recipeAPI.lookupRecipeList()
-      console.warn(response)
+  created() {
+      this.loadRecipeList()
+  },
+  methods: {
+    async loadRecipeList() {
+      try {
+        const response = await recipeAPI.lookupRecipeList()
+        console.log('response >', response)
+      } catch (error) {
+        this.$root.showSnackbar(SnackbarType.ERROR, error)
+      }
+      
+    }
   }
 }
 </script>
