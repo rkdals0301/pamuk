@@ -2,7 +2,7 @@ import axiosInstance from '@/services/axios'
 
 const endPoint = {
   lookupRecipeList: () =>
-    `/users`
+    `/recipes`
 }
 
 const recipeAPI = {
