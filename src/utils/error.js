@@ -1,5 +1,3 @@
-import Vue from 'vue'
-
-Vue.config.errorHandler = (error) => {
-    console.error('errorHandler', error)
+export default function reportError(error) {
+  console.error('errorHandler', error)
 }

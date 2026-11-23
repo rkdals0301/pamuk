@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import PageName from '@/utils/define/PageName'
 import RoutePath from '@/utils/define/RoutePath'
 
@@ -10,11 +10,12 @@ const routes = [
   {
     path: RoutePath.Recipe,
     name: PageName.Recipe,
-    component: () => import('@/views/recipe/Recipe')
+    component: () => import('@/views/recipe/Recipe.vue')
   }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes
 })
 
