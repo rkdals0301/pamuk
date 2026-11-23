@@ -1,17 +1,10 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from '@/App.vue'
 import vuetify from '@/plugins/vuetify'
-import VueRouter from 'vue-router'
 import router from '@/router'
 import store from '@/store'
-import '@/utils/error'
+import reportError from '@/utils/error'
 
-Vue.config.productionTip = false
-Vue.use(VueRouter)
-
-new Vue({
-  vuetify,
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const app = createApp(App)
+app.config.errorHandler = reportError
+app.use(vuetify).use(store).use(router).mount('#app')

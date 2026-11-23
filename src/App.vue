@@ -5,10 +5,10 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-bottom-navigation app>
-      <v-btn>
+    <v-bottom-navigation>
+      <v-btn stacked>
+        <v-icon icon="$receipt" />
         <span>Recipe</span>
-        <v-icon>mdi-receipt</v-icon>
       </v-btn>
     </v-bottom-navigation>
     <snackbar></snackbar>
@@ -25,9 +25,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-  /* Vuetify Bug */
-  .v-item-group.v-bottom-navigation .v-btn.v-size--default {
-    height: inherit;
-  }
-</style>

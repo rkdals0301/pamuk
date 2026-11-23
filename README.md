@@ -1,24 +1,30 @@
 # pamuk
 
 ## Project setup
+
+Use Node.js 22.13 or later in the Node.js 22 line, or Node.js 24 or later.
+
 ```
-yarn install
+npm ci
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
 
-### Lints and fixes files
+### Lints and tests
 ```
-yarn lint
+npm run lint
+npx playwright install chromium
+npm test
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See the [Vite configuration reference](https://vite.dev/config/). The existing
+`VUE_APP_BASE_URL` variable sets the API URL.

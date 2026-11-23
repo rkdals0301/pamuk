@@ -2,22 +2,16 @@
     <v-card
     max-width="450"
     class="mx-auto">
-    <v-list three-line>
-      <template v-for="(item, index) in items">
+    <v-list lines="three">
+      <template v-for="(item, index) in items" :key="index">
         <v-divider
           v-if="item.divider"
-          :key="index"
-          :inset="item.inset"></v-divider>
+          :class="{ 'recipe-divider--inset': item.inset }" />
         <v-list-item
           v-else
-          :key="item.title">
-          <v-list-item-avatar>
-            <v-img :src="item.avatar"></v-img>
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title v-html="item.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-          </v-list-item-content>
+          :prepend-avatar="item.avatar">
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-subtitle>{{ item.subtitle }}</v-list-item-subtitle>
         </v-list-item>
       </template>
     </v-list>
@@ -25,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import recipeAPI from '@/services/api/recipe'
 import SnackbarType from '@/utils/define/SnackbarType'
 
@@ -117,19 +112,20 @@ export default {
       this.loadRecipeList()
   },
   methods: {
+    ...mapActions('snackbar', ['showSnackbar']),
     async loadRecipeList() {
       try {
-        const response = await recipeAPI.lookupRecipeList()
-        console.log('response >', response)
+        await recipeAPI.lookupRecipeList()
       } catch (error) {
-        this.$root.showSnackbar(SnackbarType.ERROR, error)
+        this.showSnackbar({ type: SnackbarType.ERROR, text: error.message })
       }
-      
     }
   }
 }
 </script>
 
 <style scoped>
-
+.recipe-divider--inset {
+  margin-inline-start: 72px;
+}
 </style>
